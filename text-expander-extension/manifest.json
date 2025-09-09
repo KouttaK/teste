@@ -29,5 +29,14 @@
       "128": "icons/icon128.png"
     }
   },
-  "options_page": "options/options.html"
+  "options_page": "options/options.html",
+  "commands": {
+    "open_options_page": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Abrir a página de configurações"
+    }
+  }
 }
