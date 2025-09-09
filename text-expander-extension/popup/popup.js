@@ -9,13 +9,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   const toggleSiteBtn = document.getElementById('toggleSite');
 
   // Carrega dados e inicializa a UI
-  const { settings, stats } = await chrome.storage.sync.get(['settings', 'stats']);
+  let { settings, stats } = await chrome.storage.sync.get(['settings', 'stats']);
+
+  // Garante que settings e stats sejam objetos válidos para evitar erros
+  if (!settings) settings = { enabled: true, excludedSites: [] };
+  if (!stats) stats = { expansionsToday: 0, correctionsToday: 0 };
+  if (!settings.excludedSites) settings.excludedSites = [];
+
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   // Atualiza o toggle principal
-  if (settings && typeof settings.enabled !== 'undefined') {
-    enableToggle.checked = settings.enabled;
-  }
+  enableToggle.checked = settings.enabled;
 
   // Atualiza as estatísticas
   if (stats) {
