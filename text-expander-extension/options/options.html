@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Configurações - Expansor de Texto</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Configurações do Expansor de Texto</h1>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-link active" data-tab="tab-general">Geral</button>
+      <button class="tab-link" data-tab="tab-expansions">Expansões</button>
+      <button class="tab-link" data-tab="tab-corrections">Correções</button>
+      <button class="tab-link" data-tab="tab-sites">Sites</button>
+      <button class="tab-link" data-tab="tab-advanced">Avançado</button>
+    </nav>
+
+    <!-- Tab: Geral -->
+    <div id="tab-general" class="tab-content active">
+      <h2>Configurações Gerais</h2>
+      <form id="settings-form">
+        <div class="form-group">
+          <label for="expansion-mode">Modo de Trigger:</label>
+          <select id="expansion-mode" data-setting="expansionMode">
+            <option value="space">Espaço</option>
+            <option value="tab">Tab</option>
+            <option value="enter">Enter</option>
+            <option value="any">Qualquer um (Espaço, Tab, Enter)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" data-setting="correctionEnabled"> Ativar correções automáticas
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" data-setting="expansionEnabled"> Ativar expansões de texto
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" data-setting="caseSensitive"> Expansões sensíveis a maiúsculas/minúsculas
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" data-setting="preserveCase"> Preservar capitalização da abreviação
+          </label>
+        </div>
+      </form>
+    </div>
+
+    <!-- Tab: Expansões -->
+    <div id="tab-expansions" class="tab-content">
+      <h2>Gerenciar Expansões</h2>
+      <div class="list-container" id="expansions-list"></div>
+      <div class="add-item-form">
+        <input type="text" id="new-expansion-abbr" placeholder="Abreviação">
+        <input type="text" id="new-expansion-text" placeholder="Texto completo">
+        <button id="add-expansion-btn" class="btn-primary">Adicionar Expansão</button>
+      </div>
+    </div>
+
+    <!-- Tab: Correções -->
+    <div id="tab-corrections" class="tab-content">
+      <h2>Gerenciar Correções</h2>
+      <div class="list-container" id="corrections-list"></div>
+      <div class="add-item-form">
+        <input type="text" id="new-correction-wrong" placeholder="Palavra errada">
+        <input type="text" id="new-correction-correct" placeholder="Palavra correta">
+        <button id="add-correction-btn" class="btn-primary">Adicionar Correção</button>
+      </div>
+    </div>
+
+    <!-- Tab: Sites -->
+    <div id="tab-sites" class="tab-content">
+        <h2>Gerenciar Sites</h2>
+        <div class="form-group">
+            <label for="excluded-sites">Sites Excluídos (um por linha):</label>
+            <textarea id="excluded-sites" rows="5" data-setting="excludedSites"></textarea>
+        </div>
+    </div>
+
+    <!-- Tab: Avançado -->
+    <div id="tab-advanced" class="tab-content">
+      <h2>Avançado</h2>
+      <div class="form-group">
+        <button id="export-btn" class="btn-secondary">Exportar Dados</button>
+        <label for="import-file" class="btn-secondary">Importar Dados</label>
+        <input type="file" id="import-file" accept=".json" style="display: none;">
+      </div>
+    </div>
+
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
